@@ -1,0 +1,30 @@
+<div>
+    <pre>Downloading logs...</pre>
+</div>
+    
+<script>
+    function addZero(i) {
+        if (i < 10) {
+            i = "0" + i;
+        }
+        return i;
+    }
+    
+    $("main").addClass("logs");    
+    $.get("/api/internal/logs", function(data) {
+        var pre = $("#dashboard-content pre");
+        pre.text('');
+        $.each(data.response.logs, function(i, item) {
+            var date = new Date(item.time);
+            var line = '<span class="log-name log-' + item.level + '">' + item.level.padStart(8, " ") + '</span> | '
+            + date.getFullYear() + '-' + addZero(date.getMonth() + 1) + '-' + addZero(date.getDate()) + ' ' + addZero(date.getHours()) + ':' + addZero(date.getMinutes())
+            + ':' + addZero(date.getSeconds()) + ' | <span class="log-text">' + item.message + '</span>\r\n';
+            pre.append(line);
+            $.each(item.info.split(/\r?\n/), function(i, info) {
+                if(info === "") return true;
+				pre.append('           ' + info + '\r\n');
+            });
+        });
+        window.scrollTo(0, document.body.scrollHeight);
+    });
+</script>

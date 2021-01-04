@@ -1,0 +1,47 @@
+{% extends WebApp.Templates.splash_base.html %}
+<div class="main text-center">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve" width="80px" height="80px">
+        <path style="fill:#ffc107;" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+        <path style="fill:#212529;" d="M22,21h4v14h-4V21z"></path>
+        <path style="fill:#212529;" d="M26,15c0,1.105-0.895,2-2,2s-2-0.895-2-2s0.895-2,2-2S26,13.895,26,15z"></path>
+    </svg>
+    <h1>System Booting</h1>
+    <h2>Please Wait</h2>
+    <p>This page will redirect automatically once the system has successfully started. This may take a couple of minutes.</p>
+    <div id="load-progress">
+        <div class="progress">
+            <div class="progress-bar progress-bar-animated progress-bar-striped bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <code id="boot-status">{{ status_text }}</code>
+    </div>
+</div>
+<script src="/static/lib2/js/jquery-3.2.1.min.js"></script>
+<script>
+    var count = 0;
+    var commsok = false;
+    
+    setInterval(ping, 1000);
+
+    function ping() {
+        $.get("/api/internal/bootprogress", function(data) {
+            if (!data.response.restartpending && data.response.booted) {
+                window.location.href = "/";
+            } else if (!data.response.restartpending) {
+                commsok = true;
+                $('.progress-bar').css('width', data.response.progress + '%').attr('aria-valuenow', data.response.progress);
+                if ($('.progress-bar').is(".bg-warning")) {
+                    $('.progress-bar').removeClass("bg-warning");
+                    $('.progress-bar').addClass("bg-success");
+                }
+                $('#boot-status').text(data.response.status);
+            }
+        });
+        if (!commsok) {
+            if (count < 100)
+                count++;
+            $('.progress-bar').css('width', count + '%').attr('aria-valuenow', count);
+            $('#boot-status').text("Waiting for controller response...");
+        }
+    }
+</script>
+

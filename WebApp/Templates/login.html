@@ -1,0 +1,21 @@
+     {% extends WebApp.Templates.splash_base.html %}
+     <form class="form-signin text-center" action="/login?postloginurl={{ post_login_url }}" method="post">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" version="1.1" fill="#007bff" width="80px" height="80px" style="margin-bottom: 20px;">
+      <g id="surface1" fill="#007bff">
+      <path style=" " d="M 25 1.21875 C 17.832031 1.21875 12 7.050781 12 14.21875 L 12 18 L 14 18 L 14 14.21875 C 14 8.152344 18.933594 3.21875 25 3.21875 C 31.066406 3.21875 36 8.152344 36 14.21875 L 36 18 L 38 18 L 38 14.21875 C 38 7.050781 32.167969 1.21875 25 1.21875 Z M 8 20 C 6.347656 20 5 21.347656 5 23 L 5 47 C 5 48.652344 6.347656 50 8 50 L 42 50 C 43.652344 50 45 48.652344 45 47 L 45 23 C 45 21.347656 43.652344 20 42 20 Z M 13 33 C 14.105469 33 15 33.894531 15 35 C 15 36.105469 14.105469 37 13 37 C 11.894531 37 11 36.105469 11 35 C 11 33.894531 11.894531 33 13 33 Z M 21 33 C 22.105469 33 23 33.894531 23 35 C 23 36.105469 22.105469 37 21 37 C 19.894531 37 19 36.105469 19 35 C 19 33.894531 19.894531 33 21 33 Z M 29 33 C 30.105469 33 31 33.894531 31 35 C 31 36.105469 30.105469 37 29 37 C 27.894531 37 27 36.105469 27 35 C 27 33.894531 27.894531 33 29 33 Z M 37 33 C 38.105469 33 39 33.894531 39 35 C 39 36.105469 38.105469 37 37 37 C 35.894531 37 35 36.105469 35 35 C 35 33.894531 35.894531 33 37 33 Z " fill="#007bff"></path>
+      </g>
+      </svg>
+      <h1 class="h3 mb-3 font-weight-normal">{{ system_name }}</h1>
+      <p>Login Required</p>
+      {{ login_fail }}
+      <label for="inputUserName" class="sr-only">Username</label>
+      <input name="username" type="text" id="inputUserName" class="form-control" placeholder="Username" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>

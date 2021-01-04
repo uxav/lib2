@@ -1,0 +1,381 @@
+<div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Processor Info</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="ver -v"></pre>
+                        <pre class="card-text" data-console-cmd="uptime"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">System Time & Date</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="time"></pre>
+                        <pre class="card-text" data-console-cmd="timezone"></pre>
+                        <pre class="card-text" data-console-cmd="sntp"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Processor Stats</div>
+                <div class="card-body">
+                    {% if system_monitor_running %}
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px; display: none;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(109.128 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="">
+                        <div class="progress">
+                            <div class="progress-bar" id="cpu_load" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-warning" id="cpu_max" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span>CPU Load</span>
+                        <div class="progress" style="margin-top: 10px;">
+                            <div class="progress-bar" id="memory" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span>Memory Usage</span>
+                    </div>
+                    <button type="button" id="monitor-reset" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px; ">Reset Maximums</button>
+                    {% else %}
+                    <p>System monitor not running!</p>
+                    <button type="button" id="monitor-start" class="btn btn-outline-secondary btn-sm" style="margin-top: 10px; ">Start System Monitor</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Hardware Info</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="showhw"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Network Config</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="ipconfig /all"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">App Infomation</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="progcomments:{{ app_number }}"></pre>
+                        <pre class="card-text" data-console-cmd="proguptime:{{ app_number }}"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Appstat</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="appstat -p:{{ app_number }}"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Network Connections</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="iptable -p:all -t"></pre>
+                        <pre class="card-text" data-console-cmd="who"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Task Manager</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="taskstat"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Memory and Disk</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="ramfree"></pre>
+                        <pre class="card-text" data-console-cmd="showdiskinfo"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Netstat / ListenStat</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="netstat"></pre>
+                        <pre class="card-text" data-console-cmd="listenstat"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Threadpool</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="threadpoolinfo:{{ app_number }}"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">User Threads</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="ssptasks:{{ app_number }}"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Application Resource Streams</div>
+                <div class="card-body">
+                    <pre>{{ app_resource_streams }}</pre>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Lib2 Resource Streams</div>
+                <div class="card-body">
+                    <pre>{{ lib_resource_streams }}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Cresnet Devices</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="reportcresnet"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row equal-height">
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Autodiscovery</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="autodiscovery query tableformat"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<script>
+    {% if system_monitor_running %}
+    getSystemMonitorStatus();
+    {% endif %}
+    
+    $(".card").each(function() {
+        var card = $(this);
+        var loader = $(this).find(".info-loader-icon");
+        var numberOfItems = card.find(".info-data pre").length;
+        var count = 0;
+        card.find(".info-data pre").each(function() {
+            var pre = $(this);
+            var cmd = $(this).data("console-cmd");
+            var json = JSON.stringify({ "command": cmd });
+            $.post("/api/internal/runcmd", json, function(data) {
+                pre.text(data.response.reply);
+                count++;
+                if (count == numberOfItems) {
+                    loader.hide();
+                    card.find(".info-data").show();
+                }
+            });
+        });
+    });
+
+    function bytesToSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes == 0) return '0 Byte';
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+    };
+
+    function getSystemMonitorStatus() {
+        $.get("/api/internal/memory", function(data) {
+            var memused = bytesToSize(data.response.used * 1024);
+            var memtotal = bytesToSize(data.response.total * 1024);
+            $(".progress-bar#memory").css('width', data.response.percent + '%').attr('aria-valuenow', data.response.percent).text(memused + " free of " + memtotal);
+        });
+
+        $.get("/api/internal/cpu", function(data) {
+            var load = data.response.cpu_load;
+            var max = data.response.cpu_max_margin;
+            $(".progress-bar#cpu_load").css('width', load + '%').attr('aria-valuenow', load);
+            $(".progress-bar#cpu_max").css('width', max + '%').attr('aria-valuenow', max);
+        });
+    }
+
+    $("#monitor-reset").on('click', function() {
+        var json = JSON.stringify({ "method": "reset_maximums" });
+        $.post("/api/internal/systemmonitor", json, function(data) {
+            $(".progress-bar#cpu_max").css('width', '0%').attr('aria-valuenow', 0);
+        });
+    });
+
+    $("#monitor-start").on('click', function() {
+        var json = JSON.stringify({ "method": "start" });
+        $.post("/api/internal/systemmonitor", json, function(data) {
+            location.reload();
+        });
+    });
+    
+    {% if system_monitor_running %}
+    setInterval(getSystemMonitorStatus, 10000);
+    {% endif %}
+</script>

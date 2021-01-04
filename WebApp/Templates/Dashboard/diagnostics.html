@@ -1,0 +1,10 @@
+<h4>Diagnostics</h4>
+
+<div class="pt-2">
+    {% for message in status_messages %}
+    <div class="status-message alert {{ message.Level }}" role="alert">
+        {{ message.Title }}{{ message.Message }}
+    </div>
+    {% endfor %}
+</div>
+    

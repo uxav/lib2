@@ -1,0 +1,46 @@
+<div id="source-control">
+    
+</div>
+    
+<script>
+    function getStatus() {
+        $.get("/api/internal/avstatus", function(data) {
+            var content = "";
+            data.response.rooms.forEach(room => {
+                content = content + "<div class=\"card mb-3\"><h5 class=\"card-header\">" + room.name + "</h5><div class=\"card-body\"><h5 class=\"card-title\">Source selection</h5>";
+                room.sources.forEach(source => {
+                    var c = "btn";
+                    if (source.active) {
+                        c = c + "-success active";
+                    } else {
+                        c = c + "-light";
+                    }
+                    content = content + "<button data-room-id=" + room.id + " data-source-id=" + source.id + " type=\"button\" class=\"btn btn-lg " + c + " btn-source mr-2\">" + source.name + "</button>";
+                });
+                content = content + "<button data-room-id=" + room.id + " type=\"button\" class=\"btn btn-lg btn-danger btn-poweroff mr-2\">Power Off</button>";
+                content = content + "</div></div>";
+            });
+            
+            $("#source-control").html(content);
+        
+            $('button.btn-source').click(function() {
+                var room = $(this).data('room-id');
+                var source = $(this).data('source-id');
+                var postData = JSON.stringify({ "method": "select_source", "room": room, "source": source });
+                $.post("/api/internal/av", postData, function(data) {
+                    getStatus();
+                });
+            });
+        
+            $('button.btn-poweroff').click(function() {
+                var room = $(this).data('room-id');
+                var postData = JSON.stringify({ "method": "power_off", "room": room });
+                $.post("/api/internal/av", postData, function(data) {
+                    getStatus();
+                });
+            });
+        });
+    }
+    
+    getStatus();
+</script>

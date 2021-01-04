@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="UX Digital Systems Ltd">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/lib2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    {{ page_style_link }}
+      
+    <!-- Sticky Footer CSS -->
+    <link href="/static/lib2/css/footer.css" rel="stylesheet">
+      
+    <title>{{ page_title }}</title>
+  </head>
+  <body>
+      {{ block_content }}
+      
+    <footer class="footer">
+      <div class="container">
+        <div class="container">
+          <div style="float:  left;"><img src="/static/lib2/img/ux_logo.svg" alt="UX Digital" height="26"></div>
+          <div style="float: right;"><a href="/">{{ processor_fqdn }}&nbsp;&nbsp;({{ processor_ip_address }})</a></div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/static/lib2/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/lib2/js/popper.min.js"></script>
+    <script src="/static/lib2/js/bootstrap.min.js"></script>
+  </body>
+</html>

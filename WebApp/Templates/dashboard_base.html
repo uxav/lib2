@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="UX Digital Systems Ltd">
+
+        <!-- Bootstrap core CSS -->
+        <link href="/static/lib2/css/bootstrap.min.css" rel="stylesheet">
+     
+        <!-- Dashboard CSS -->
+        <link href="/static/lib2/css/dashboard.css" rel="stylesheet">
+      
+        <title>{{ page_title }}</title>
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+            <a class="navbar-brand col-md-3 col-xl-2 mr-0" href="/dashboard"><i class="material-icons" style="top: 3px; position: relative;">location_on</i> <span style="margin-left: 5px; position: relative; top: -2px; ">{{ system_name }}</span></a>
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                    {% if authentication_enabled %}<a class="nav-link" href="{{ login_logout_link }}">{{ login_logout_button_name }}</a>{% else %}<h6 class="badge badge-danger" style="margin: 0; padding: 6px;">Authentication Disabled</h6>{% endif %}
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-3 col-xl-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/home">
+                                    <i class="material-icons">dashboard</i>
+                                    System Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/diagnostics">
+                                    <i class="material-icons">error</i>
+                                    Diagnostics
+                                    <span class="badge badge-pill badge-{{ diagnostics_badge_type }}" id="diag-count-badge">{{ diagnostics_badge_count }}</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/logs">
+                                    <i class="material-icons">list</i>
+                                    System Logs
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/service">
+                                    <i class="material-icons">build</i>
+                                    Service
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/config">
+                                    <i class="material-icons">sd_storage</i>
+                                    System Config
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/dashboard/avcontrol">
+                                    <i class="material-icons">tv</i>
+                                    AV Control
+                                </a>
+                            </li>
+                            {% if has_xpanels %}
+                            <li class="nav-item">
+                                <a id="xpanel-option" class="nav-link" href="#">
+                                    <i class="material-icons">touch_app</i>
+                                    XPanel Control
+                                </a>
+                                <ul id="xpanel-list" style="display: none;">
+                                    {% for link in xpanel_links %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ link.Url }}">{{ link.Name }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% for link in page_links %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ link.Url }}">
+                                    <i class="material-icons">{{ link.IconClass }}</i>
+                                    {{ link.Name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#restartModal">
+                                    <i class="material-icons">cached</i>
+                                    Reboot
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                
+                <main role="main" class="col-md-9 ml-sm-auto col-xl-10 pt-3 px-4">
+                    <div id="dashboard-loader" style="min-height: 40vh; text-align: center;">
+                        <svg width="60px" height="60px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring" style="background: none;/* margin:  auto; *//* vertical-align:  middle; *//* align-items: center; */position:  absolute;height:  100%;">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(312 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div id="dashboard-content" style="display: none;"></div>
+                </main>
+                
+                <!-- Reboot Confirm Modal -->
+                <div class="modal fade" id="restartModal" tabindex="-1" role="dialog" aria-labelledby="restartModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="restartModalLabel">Are you sure?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Restart or reboot the control processor?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <a href="/boot?action=restart"><button type="button" class="btn btn-danger">Restart Application</button></a>
+                                <a href="/boot?action=reboot"><button type="button" class="btn btn-danger">Reboot Processor</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="/static/lib2/js/jquery-3.2.1.min.js"></script>
+        <script src="/static/lib2/js/popper.min.js"></script>
+        <script src="/static/lib2/js/bootstrap.min.js"></script>
+        {{ custom_script }}
+        
+        <script>
+            $("#dashboard-content").load("{{ content_url }}", function(response, status, xhr) {
+                if (status == "error") {
+                    $("#dashboard-content").html(msg + xhr.status + " " + xhr.statusText);
+                    $("#dashboard-loader").fadeOut(500, function() {
+                        $("#dashboard-content").fadeIn(500);
+                    });
+                } else {
+                    $("#dashboard-loader").fadeOut(500, function() {
+                        $("#dashboard-content").fadeIn(500);
+                    });
+                }
+            });
+
+            $(function() {
+                var pathname = window.location.pathname;
+                $('.nav > li > a[href="' + pathname + '"]').addClass('active');
+            });
+            {% if has_xpanels %}
+            $('#xpanel-option').click(function() {
+                $('#xpanel-list').toggle();
+            });
+            {% endif %}
+        </script>
+    </body>
+</html>

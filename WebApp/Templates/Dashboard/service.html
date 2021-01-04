@@ -1,0 +1,15 @@
+<div style="display: flex; text-align: center; height: calc(100vh - 80px); align-items: center;">
+    <div class="container-fluid">
+        <h1 style="font-weight: 200;">Service Report</h1>
+        <p>Download a service package file containing system status, configs and logs</p>
+        <a id="service-download" class="btn btn-lg btn-primary" href="/servicepackage/download">Download</a>
+        <iframe id="my_iframe" style="display:none;"></iframe>
+    </div>
+</div>
+    
+<script>
+    $('#service-download').click(function(e) {
+        var button = $(this);
+        button.addClass('disabled').text('Download Requested, Please Wait');
+    });
+</script>

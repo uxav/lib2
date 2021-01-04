@@ -1,0 +1,17 @@
+     {% extends WebApp.Templates.splash_base.html %}
+     <div class="main text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve" width="80px" height="80px">
+            <path style="fill:#ffc107;" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path>
+            <path style="fill:#212529;" d="M22,21h4v14h-4V21z"></path>
+            <path style="fill:#212529;" d="M26,15c0,1.105-0.895,2-2,2s-2-0.895-2-2s0.895-2,2-2S26,13.895,26,15z"></path>
+        </svg>
+         <h1>{{ error_code }}</h1>
+         <h2>{{ error_title }}</h2>
+         <div class="card">
+             <div class="card-body">
+                 <pre class="message">{{ error_message }}</pre>
+                 <pre><b>{{ processor_prompt }}</b> {{ processor_hostname }}</pre>
+             </div>
+         </div>
+         <div><a href="/" class="btn btn-warning btn-sm">Back to Home</a></div>
+     </div>

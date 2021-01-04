@@ -1,0 +1,489 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D9251E63-34C3-43F3-9D26-E534A4CCB4B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UX.Lib2</RootNamespace>
+    <AssemblyName>UX.Lib2</AssemblyName>
+    <ProjectTypeGuids>{0B4745B0-194B-4BB6-8E21-E9057CA92300};{4D628B5B-2FBC-4AA6-8C16-197242AEB884};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PlatformFamilyName>WindowsCE</PlatformFamilyName>
+    <PlatformID>E2BECB1F-8C8C-41ba-B736-9BE7D946A398</PlatformID>
+    <OSVersion>5.0</OSVersion>
+    <DeployDirSuffix>SmartDeviceProject1</DeployDirSuffix>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <NativePlatformName>Windows CE</NativePlatformName>
+    <FormFactorID>
+    </FormFactorID>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <AllowedReferenceRelatedFileExtensions>.allowedReferenceRelatedFileExtensions</AllowedReferenceRelatedFileExtensions>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FileAlignment>512</FileAlignment>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Debug\UX.Lib2.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowedReferenceRelatedFileExtensions>.allowedReferenceRelatedFileExtensions</AllowedReferenceRelatedFileExtensions>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FileAlignment>512</FileAlignment>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <GenerateSerializationAssemblies>off</GenerateSerializationAssemblies>
+    <DocumentationFile>bin\Release\UX.Lib2.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Crestron.SimplSharpPro.DM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\ProgramData\Crestron\SDK\SSPDevices\Crestron.SimplSharpPro.DM.dll</HintPath>
+    </Reference>
+    <Reference Include="Crestron.SimplSharpPro.Fusion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SSPDevices\Crestron.SimplSharpPro.Fusion.dll</HintPath>
+    </Reference>
+    <Reference Include="Crestron.SimplSharpPro.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SSPDevices\Crestron.SimplSharpPro.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="SimplSharpAutoUpdateInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SimplSharpAutoUpdateInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SimplSharpCryptographyInterface, Version=1.0.6197.21123, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\ProgramData\Crestron\SDK\SimplSharpCryptographyInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SimplSharpCustomAttributesInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpCustomAttributesInterface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimplSharpCWSHelperInterface, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpCWSHelperInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SimplSharpHelperInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpHelperInterface.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimplSharpNewtonsoft, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpNewtonsoft.dll</HintPath>
+    </Reference>
+    <Reference Include="SimplSharpPro, Version=1.5.3.17, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpPro.exe</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SimplSharpReflectionInterface, Version=1.0.5583.25238, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ProgramData\Crestron\SDK\SimplSharpReflectionInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpCrestronExtensionsLibrary, Version=1.0.0.10858, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpCrestronExtensionsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpDateTimeLibrary, Version=1.0.0.11003, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpDateTimeLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpDotNetZip, Version=1.9.1.8, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpDotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpProTaskExtensions, Version=1.0.0.11672, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpProTaskExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpReflectionExtensionsLibrary, Version=1.0.0.10876, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpReflectionExtensionsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpThreadingLibrary, Version=1.0.0.10923, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpThreadingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSharpZip, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSharpZip.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoConcurrentCollectionsLibrary, Version=1.0.0.11044, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoConcurrentCollectionsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoConsoleLibrary, Version=1.0.0.10586, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoConsoleLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoCryptographyExtensions, Version=1.0.0.11226, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoCryptographyExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoCryptographyLibrary, Version=1.0.0.11066, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoCryptographyLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoIOLibrary, Version=1.0.0.10943, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoIOLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoNetHttpLibrary, Version=1.0.0.12423, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoNetHttpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoNetLibrary, Version=1.0.0.11191, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoNetLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoNetWebLibrary, Version=1.0.0.11748, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoNetWebLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProIOLibrary, Version=1.0.0.11860, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProIOLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProNetLibrary, Version=1.0.0.10550, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProNetLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProNetWebAsyncLibrary, Version=1.0.0.16008, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProNetWebAsyncLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProNetWebLibrary, Version=1.0.0.12276, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProNetWebLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProTaskLibrary, Version=1.0.0.11149, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProTaskLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoProThreadingLibrary, Version=1.0.0.11090, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoProThreadingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoSslStreamLibrary, Version=1.0.0.11544, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoSslStreamLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoSupportLibrary, Version=1.0.0.10893, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoSupportLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoThreadingLibrary, Version=1.0.0.11086, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoThreadingLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoThreadPoolLibrary, Version=1.0.0.11169, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoThreadPoolLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoTupleLibrary, Version=1.0.0.10958, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoTupleLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoWebLibrary, Version=1.0.0.10524, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoWebLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SSMonoX509CertificatesLibrary, Version=1.0.0.11458, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\includes\NColvin\SSMonoX509CertificatesLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\IConfig.cs" />
+    <Compile Include="ConsoleTable.cs" />
+    <Compile Include="CsvParser.cs" />
+    <Compile Include="DeviceSupport\ICamera.cs" />
+    <Compile Include="DeviceSupport\Processors.cs" />
+    <Compile Include="DeviceSupport\Relays\IHoistController.cs" />
+    <Compile Include="DeviceSupport\Relays\Relay.cs" />
+    <Compile Include="DeviceSupport\Relays\UpDownRelays.cs" />
+    <Compile Include="Logging\SystemLog.cs" />
+    <Compile Include="Models\AutoDiscoveredDevice.cs" />
+    <Compile Include="Models\AutoDiscovery.cs" />
+    <Compile Include="Models\AutoDiscoveryResults.cs" />
+    <Compile Include="Models\IAudioLevelDevice.cs" />
+    <Compile Include="DeviceSupport\IFusionAsset.cs" />
+    <Compile Include="Models\InitializeProcess.cs" />
+    <Compile Include="Models\IpIdFactory.cs" />
+    <Compile Include="Models\IStatusMessageItem.cs" />
+    <Compile Include="Models\SourceGroup.cs" />
+    <Compile Include="Models\StatusMessage.cs" />
+    <Compile Include="Models\SystemMonitor.cs" />
+    <Compile Include="Models\UserPrompt.cs" />
+    <Compile Include="Sockets\TCPServerSocketBase.cs" />
+    <Compile Include="UI\UIColor.cs" />
+    <Compile Include="UI\UIColorChip.cs" />
+    <Compile Include="UI\UIDynamicButtonList.cs" />
+    <Compile Include="UI\UIDynamicButtonListItem.cs" />
+    <Compile Include="UI\UIActionSheet.cs" />
+    <Compile Include="UI\UIActionSheetButtonList.cs" />
+    <Compile Include="UI\UIActionSheetButtonListItem.cs" />
+    <Compile Include="UI\UIHardButton.cs" />
+    <Compile Include="UI\UIHelpers.cs" />
+    <Compile Include="UI\UIKeypad.cs" />
+    <Compile Include="UI\UIPageCollection.cs" />
+    <Compile Include="UI\UITabBar.cs" />
+    <Compile Include="UI\UITextEntry.cs" />
+    <Compile Include="WebApp\ApiHandler.cs" />
+    <Compile Include="WebApp\BootPageHandler.cs" />
+    <Compile Include="WebApp\BuiltInApiHandler.cs" />
+    <Compile Include="WebApp\DashboardContentHandler.cs" />
+    <Compile Include="WebApp\LogoutHandler.cs" />
+    <Compile Include="WebApp\DashboardHandler.cs" />
+    <Compile Include="WebApp\LoginHandler.cs" />
+    <Compile Include="WebApp\ProcessorServiceReportHandler.cs" />
+    <Compile Include="WebApp\Templates\TemplateEngine.cs" />
+    <Compile Include="WebApp\WebApp.cs" />
+    <Compile Include="WebScripting2\BaseRequestHandler.cs" />
+    <Compile Include="WebScripting2\SetupRedirectHandler.cs" />
+    <Compile Include="WebScripting2\FileHandlerBase.cs" />
+    <Compile Include="WebScripting2\MimeMapping.cs" />
+    <Compile Include="WebScripting2\Request.cs" />
+    <Compile Include="WebScripting2\Session.cs" />
+    <Compile Include="WebScripting2\SessionManager.cs" />
+    <Compile Include="WebScripting2\InternalResourceFileHandler.cs" />
+    <Compile Include="WebScripting2\WebScriptingServer.cs" />
+    <Compile Include="WebScripting\Api\ApiServer.cs" />
+    <Compile Include="WebScripting\Api\BaseApiRequestHandler.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="DeviceSupport\DisplayDeviceBase.cs" />
+    <Compile Include="DeviceSupport\DisplayDeviceInput.cs" />
+    <Compile Include="DeviceSupport\IDevice.cs" />
+    <Compile Include="DeviceSupport\IPowerDevice.cs" />
+    <Compile Include="DeviceSupport\ISourceDevice.cs" />
+    <Compile Include="DeviceSupport\ISwitcher.cs" />
+    <Compile Include="DeviceSupport\ITransportDevice.cs" />
+    <Compile Include="Models\DisplayBase.cs" />
+    <Compile Include="Models\DisplayCollection.cs" />
+    <Compile Include="Models\RoomBase.cs" />
+    <Compile Include="Models\RoomCollection.cs" />
+    <Compile Include="Models\SourceBase.cs" />
+    <Compile Include="Models\SourceCollection.cs" />
+    <Compile Include="Sockets\TCPClientSocketBase.cs" />
+    <Compile Include="UI\ButtonCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IAnalogFeedback.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IAnalogTouch.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IDigitalFeedback.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IDigitalPress.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IEnableItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IModeItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\ISerialItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\ITextItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IUIObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\IVisibleItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIButtonWithModes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIControllerCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIControllerWithSmartObjects.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIGuage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UILabel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIMediaIcons.cs" />
+    <Compile Include="UI\UIObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UIPageViewController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UISlider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\UISubPageReferenceList.cs" />
+    <Compile Include="UI\UISubPageReferenceListItem.cs" />
+    <Compile Include="WebScripting\BaseRequestHandler.cs" />
+    <Compile Include="WebScripting\WebScriptingServer.cs" />
+    <Compile Include="Cloud\Logger\LogEntry.cs" />
+    <Compile Include="Cloud\Logger\CloudLog.cs" />
+    <Compile Include="Cloud\Mailer\AssistanceRequest.cs" />
+    <Compile Include="Cloud\Mailer\Client.cs" />
+    <Compile Include="Config\AConfig.cs" />
+    <Compile Include="Config\IDeviceConfig.cs" />
+    <Compile Include="DeviceSupport\Extenstions.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Logging\ILogEntry.cs" />
+    <Compile Include="Models\AudioLevelCollection.cs" />
+    <Compile Include="Models\IAudioLevelControl.cs" />
+    <Compile Include="Models\SystemBase.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools.cs" />
+    <Compile Include="UI\AudioControls\VolumeMuteButton.cs" />
+    <Compile Include="UI\AudioControls\VolumeSlider.cs" />
+    <Compile Include="UI\Formatters\DefaultDateFormatter.cs" />
+    <Compile Include="UI\Formatters\DefaultTimeFormatter.cs" />
+    <Compile Include="UI\UIViewController.cs" />
+    <None Include="Properties\ControlSystem.cfg" />
+    <None Include="README.md" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jsoneditor.js.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\jsoneditor.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.min.js.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.bundle.js.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.bundle.min.js.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.js.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap.min.css.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-reboot.min.css.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap.css.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-grid.min.css.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-reboot.css.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-grid.css.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\fonts\MaterialIcons-Regular.eot" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\fonts\MaterialIcons-Regular.ttf" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\fonts\MaterialIcons-Regular.woff" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\fonts\MaterialIcons-Regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\login.html" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-grid.min.css" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-reboot.min.css" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap.min.css" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\signin.css" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\img\ux_logo.svg" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.min.js" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jquery-3.2.1.slim.min.js" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\popper.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\splash_base.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\error.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\error.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\footer.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\dashboard.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\dashboard_base.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\Dashboard\diagnostics.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jquery-3.2.1.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\Dashboard\logs.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\Dashboard\config.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\boot.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\boot.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\fonts\MaterialIcons-Regular.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\Dashboard\home.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\Dashboard\service.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-grid.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap-reboot.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\bootstrap.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.bundle.js" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.bundle.min.js" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\jsoneditor.css" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\jsoneditor.min.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jsoneditor.js" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jsoneditor.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\img\jsoneditor-icons.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebApp\Templates\Dashboard\avcontrol.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
