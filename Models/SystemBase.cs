@@ -342,8 +342,18 @@ namespace UX.Lib2.Models
 
             foreach (var source in Sources.Where(s => s.Device != null))
             {
-                _initializeQueue.Enqueue(new InitializeProcess(source.Device.Initialize,
-                    string.Format("Initializing Source Device: {0}", source.Device.GetType().Name)));
+                var device = source.Device as IInitializeComplete;
+                if (device != null)
+                {
+                    _initializeQueue.Enqueue(new InitializeProcess(source.Device.Initialize,
+                        string.Format("Initializing Source Device: {0}", device.GetType().Name),
+                        TimeSpan.Zero, device.CheckInitializedOk));
+                }
+                else
+                {
+                    _initializeQueue.Enqueue(new InitializeProcess(source.Device.Initialize,
+                        string.Format("Initializing Source Device: {0}", source.Device.GetType().Name)));
+                }
             }
 
             foreach (var room in Rooms)
@@ -365,7 +375,7 @@ namespace UX.Lib2.Models
             foreach (var room in Rooms.Where(r => r.FusionEnabled))
             {
                 _initializeQueue.Enqueue(new InitializeProcess(room.FusionRegisterInternal,
-                    string.Format("Registering Fusion for Room: \"{0}\"", room.Name)));
+                    string.Format("Registering Fusion for Room: \"{0}\"", room.Name), TimeSpan.FromSeconds(5)));
             }
 
             /*if (Rooms.Any(r => r.FusionEnabled))

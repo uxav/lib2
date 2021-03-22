@@ -220,6 +220,7 @@
     <Compile Include="ConsoleTable.cs" />
     <Compile Include="CsvParser.cs" />
     <Compile Include="DeviceSupport\ICamera.cs" />
+    <Compile Include="DeviceSupport\IInitializeComplete.cs" />
     <Compile Include="DeviceSupport\Processors.cs" />
     <Compile Include="DeviceSupport\Relays\IHoistController.cs" />
     <Compile Include="DeviceSupport\Relays\Relay.cs" />
