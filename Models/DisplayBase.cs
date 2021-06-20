@@ -188,7 +188,11 @@ namespace UX.Lib2.Models
             }
             try
             {
-                if (source.DisplayDeviceInput != DisplayDeviceInput.Unknown)
+                if (Room != null && Room.GetDisplayInputOverrideForSource(this, source) != DisplayDeviceInput.Unknown)
+                {
+                    RouteSourceDisplayDeviceInput(Room.GetDisplayInputOverrideForSource(this, source));
+                }
+                else if (source.DisplayDeviceInput != DisplayDeviceInput.Unknown)
                 {
                     RouteSourceDisplayDeviceInput(source.DisplayDeviceInput);
                 }

@@ -420,6 +420,11 @@ namespace UX.Lib2.Models
             return null;
         }
 
+        public virtual DisplayDeviceInput GetDisplayInputOverrideForSource(DisplayBase display, SourceBase source)
+        {
+            return DisplayDeviceInput.Unknown;
+        }
+
         internal void FusionRegisterInternal()
         {
             var ipId = FusionShouldRegister();
