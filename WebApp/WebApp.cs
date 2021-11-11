@@ -36,7 +36,6 @@ namespace UX.Lib2.WebApp
 
         private readonly WebScriptingServer _server;
         private readonly List<UserPageLink> _userPageLinks = new List<UserPageLink>();
-        private readonly List<XPanelLink> _xpanelLinks = new List<XPanelLink>(); 
 
         #endregion
 
@@ -80,11 +79,6 @@ namespace UX.Lib2.WebApp
             get { return new ReadOnlyCollection<UserPageLink>(_userPageLinks); }
         }
 
-        public IEnumerable<XPanelLink> XPanelLinks
-        {
-            get { return new ReadOnlyCollection<XPanelLink>(_xpanelLinks); }
-        } 
-
         public string DashboardCustomScriptPath { get; set; }
 
         #endregion
@@ -111,15 +105,6 @@ namespace UX.Lib2.WebApp
             });
         }
 
-        public void AddXpanelLink(string path, string name)
-        {
-            _xpanelLinks.Add(new XPanelLink
-            {
-                Url = path,
-                Name = name
-            });
-        }
-
         #endregion
     }
 
@@ -127,12 +112,6 @@ namespace UX.Lib2.WebApp
     {
         public string Url;
         public string IconClass;
-        public string Name;
-    }
-
-    public struct XPanelLink
-    {
-        public string Url;
         public string Name;
     }
 }

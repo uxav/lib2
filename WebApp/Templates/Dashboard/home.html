@@ -255,6 +255,23 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl">
+            <div class="card mb-4">
+                <div class="card-header">Auto Update Status</div>
+                <div class="card-body">
+                    <div class="info-loader-icon" style="text-align: center; margin: 40px;">
+                        <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-dual-ring">
+                            <circle cx="50" cy="50" ng-attr-r="{{config.radius}}" ng-attr-stroke-width="{{config.width}}" ng-attr-stroke="{{config.stroke}}" ng-attr-stroke-dasharray="{{config.dasharray}}" fill="none" stroke-linecap="round" r="40" stroke-width="8" stroke="#007bff" stroke-dasharray="62.83185307179586 62.83185307179586" transform="rotate(18 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div>
+                    <div class="info-data" style="display: none;">
+                        <pre class="card-text" data-console-cmd="austatus"></pre>                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row equal-height">
         <div class="col-xl">
