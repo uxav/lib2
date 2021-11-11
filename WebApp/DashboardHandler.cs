@@ -78,8 +78,6 @@ namespace UX.Lib2.WebApp
 
                 template.Context["system_name"] = System.Name;
                 template.Context["content_url"] = ContentUrl;
-                template.Context["has_xpanels"] = Request.Server.WebApp.XPanelLinks.Any();
-                template.Context["xpanel_links"] = Request.Server.WebApp.XPanelLinks;
                 template.Context["page_links"] = Request.Server.WebApp.UserPageLinks;
                 var badgeClass = "primary";
                 var messages = System.StatusMessages.ToArray();

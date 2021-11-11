@@ -67,21 +67,6 @@
                                     AV Control
                                 </a>
                             </li>
-                            {% if has_xpanels %}
-                            <li class="nav-item">
-                                <a id="xpanel-option" class="nav-link" href="#">
-                                    <i class="material-icons">touch_app</i>
-                                    XPanel Control
-                                </a>
-                                <ul id="xpanel-list" style="display: none;">
-                                    {% for link in xpanel_links %}
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ link.Url }}">{{ link.Name }}</a>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                            {% endif %}
                             {% for link in page_links %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ link.Url }}">
@@ -161,11 +146,6 @@
                 var pathname = window.location.pathname;
                 $('.nav > li > a[href="' + pathname + '"]').addClass('active');
             });
-            {% if has_xpanels %}
-            $('#xpanel-option').click(function() {
-                $('#xpanel-list').toggle();
-            });
-            {% endif %}
         </script>
     </body>
 </html>
