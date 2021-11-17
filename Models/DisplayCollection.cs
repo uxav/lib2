@@ -38,12 +38,12 @@ namespace UX.Lib2.Models
 
         #region Constructors
 
-        internal DisplayCollection()
+        public DisplayCollection()
         {
             _displays = new Dictionary<uint, DisplayBase>();
         }
 
-        internal DisplayCollection(IEnumerable<DisplayBase> fromDisplays)
+        public DisplayCollection(IEnumerable<DisplayBase> fromDisplays)
         {
             _displays = new Dictionary<uint, DisplayBase>();
             foreach (var display in fromDisplays)
