@@ -117,7 +117,14 @@ namespace UX.Lib2
 
                     var plugin = doc.Root.Element("Plugin");
                     dict["SIMPLSharp Version"] = plugin.Element("Version").Value;
-                    dict["Include4.dat Version"] = plugin.Element("Include4.dat").Value;
+                    try
+                    {
+                        dict["Include4.dat Version"] = plugin.Element("Include4.dat").Value;
+                    }
+                    catch
+                    {
+                        dict["Include4.dat Version"] = "Unknown";
+                    }
 
                     return new ReadOnlyDictionary<string, string>(dict);
                 }
