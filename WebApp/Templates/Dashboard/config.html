@@ -53,7 +53,7 @@
     
 </div>
 
-<link href="/static/lib2/css/jsoneditor.css" rel="stylesheet" type="text/css">
+<link href="/static/lib2/css/jsoneditor.min.css" rel="stylesheet" type="text/css">
 <script src="/static/lib2/js/jsoneditor.min.js"></script>
     
 <script>
@@ -68,24 +68,40 @@
     $('button#saveButton').click(function() {
         var json = editor.get();
         var postData = JSON.stringify({ "method": "save", "configdata": json });
-        $.post("/api/internal/config", postData, function(data) {
-            $("#saveModal .modal-title").html(data.response.title);
-            $("#saveModal .modal-body").html(data.response.message);
-            if (!data.response.error) {
-                $("#saveModal .modal-footer").hide();
-                setTimeout(location.reload.bind(location), 1000);
+        $.ajax
+        ({
+            async: true,
+            url: '/api/internal/config',
+            data: postData,
+            type: 'post',
+            success: function(result)
+            {
+                $("#saveModal .modal-title").html(result.response.title);
+                $("#saveModal .modal-body").html(result.response.message);
+                if (!result.response.error) {
+                    $("#saveModal .modal-footer").hide();
+                    setTimeout(location.reload.bind(location), 1000);
+                }
             }
         });
     });
 
     $('button#restoreButton').click(function() {
         var postData = JSON.stringify({ "method": "reset" });
-        $.post("/api/internal/config", postData, function(data) {
-            $("#saveModal .modal-title").html(data.response.title);
-            $("#saveModal .modal-body").html(data.response.message);
-            if (!data.response.error) {
-                $("#saveModal .modal-footer").hide();
-                setTimeout(window.location.href = "/boot", 1000);
+        $.ajax
+        ({
+            async: true,
+            url: '/api/internal/config',
+            data: postData,
+            type: 'post',
+            success: function(result)
+            {
+                $("#saveModal .modal-title").html(result.response.title);
+                $("#saveModal .modal-body").html(result.response.message);
+                if (!result.response.error) {
+                    $("#saveModal .modal-footer").hide();
+                    setTimeout(window.location.href = "/boot", 1000);
+                }
             }
         });
     });

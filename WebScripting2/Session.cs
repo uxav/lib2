@@ -96,7 +96,7 @@ namespace UX.Lib2.WebScripting2
         {
             if (DateTime.Now >= _expiryTime || !_user.Authenticated) return null;
             _expiryTime = DateTime.Now.Add(TimeSpan.FromMinutes(120));
-            return new HttpHeader(string.Format("Set-Cookie: sessionid={0}; HttpOnly; Path=/; Expires={1}",
+            return new HttpHeader(string.Format("Set-Cookie: sessionid={0}; HttpOnly; SameSite=Strict; Path=/; Expires={1}",
                 SessionId, _expiryTime.ToUniversalTime().ToString("R")));
         }
 

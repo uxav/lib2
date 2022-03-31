@@ -381,8 +381,7 @@
     <Compile Include="UI\UIViewController.cs" />
     <None Include="Properties\ControlSystem.cfg" />
     <None Include="README.md" />
-    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jsoneditor.js.map" />
-    <EmbeddedResource Include="WebScripting2\StaticFiles\css\jsoneditor.map" />
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jsoneditor.map" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.min.js.map" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.bundle.js.map" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.bundle.min.js.map" />
@@ -406,7 +405,6 @@
     <EmbeddedResource Include="WebScripting2\StaticFiles\css\signin.css" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\img\ux_logo.svg" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.min.js" />
-    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jquery-3.2.1.slim.min.js" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\js\popper.min.js" />
   </ItemGroup>
   <ItemGroup>
@@ -429,9 +427,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WebApp\Templates\Dashboard\diagnostics.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jquery-3.2.1.min.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WebApp\Templates\Dashboard\logs.html" />
@@ -469,11 +464,9 @@
     <EmbeddedResource Include="WebScripting2\StaticFiles\js\bootstrap.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WebScripting2\StaticFiles\css\jsoneditor.css" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\css\jsoneditor.min.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jsoneditor.js" />
     <EmbeddedResource Include="WebScripting2\StaticFiles\js\jsoneditor.min.js" />
   </ItemGroup>
   <ItemGroup>
@@ -481,6 +474,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WebApp\Templates\Dashboard\avcontrol.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\js\jquery-3.6.0.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WebScripting2\StaticFiles\css\img\jsoneditor-icons.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <PropertyGroup>
