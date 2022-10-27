@@ -47,6 +47,7 @@ namespace UX.Lib2.UI
         private readonly UILabel _titleLabel;
         private readonly UILabel _subtitleLabel;
         private Dictionary<uint, string> _buttonKeyNames = new Dictionary<uint, string>();
+        private object _objRef;
 
         #endregion
 
@@ -112,6 +113,7 @@ namespace UX.Lib2.UI
             _prompt = prompt;
             _timeOutTime = 0;
             _callback = null;
+            _objRef = null;
 
             if (_titleLabel != null)
                 _titleLabel.Text = prompt.Title;
@@ -160,6 +162,7 @@ namespace UX.Lib2.UI
             if (_view.Visible) return;
 
             _prompt = null;
+            _objRef = null;
             _callback = responseCallBack;
             if (_titleLabel != null)
                 _titleLabel.Text = title;
@@ -197,6 +200,7 @@ namespace UX.Lib2.UI
             if(_view.Visible) return;
 
             _prompt = null;
+            _objRef = null;
             _callback = responseCallBack;
             if (_titleLabel != null)
                 _titleLabel.Text = title;
@@ -221,6 +225,7 @@ namespace UX.Lib2.UI
             if (_view.Visible) return;
 
             _prompt = null;
+            _objRef = null;
             _callback = responseCallBack;
             if (_titleLabel != null)
                 _titleLabel.Text = title;
@@ -250,6 +255,7 @@ namespace UX.Lib2.UI
             if (_view.Visible) return;
 
             _prompt = null;
+            _objRef = null;
             _callback = responseCallBack;
             if (_titleLabel != null)
                 _titleLabel.Text = title;
@@ -276,6 +282,14 @@ namespace UX.Lib2.UI
 
             _view.Show();
         }
+
+        public void Show(UIActionSheetResponse responseCallBack, string title, string subtitle, 
+            string acknowledgeButtonTitle, string cancelButtonTitle, object objRef)
+        {
+            Show(responseCallBack, title, subtitle, acknowledgeButtonTitle, cancelButtonTitle);
+            _objRef = objRef;
+        }
+
 
         public void Cancel()
         {
@@ -348,7 +362,8 @@ namespace UX.Lib2.UI
                 {
                     ButtonIndex = index,
                     ButtonTitle = _buttonList[index].Text,
-                    ButtonKeyName = _buttonKeyNames[index]
+                    ButtonKeyName = _buttonKeyNames[index],
+                    Ref = _objRef
                 });
             }
             catch (Exception e)
@@ -392,6 +407,7 @@ namespace UX.Lib2.UI
         public uint ButtonIndex { get; internal set; }
         public string ButtonTitle { get; internal set; }
         public string ButtonKeyName { get; internal set; }
+        public object Ref { get; internal set; }
     }
 
     public delegate void UIActionSheetResponse(UIActionSheetResponseType responseType, UIActionSheetResponseArgs args);
